@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Prancha CAA">
+  <rect width="512" height="512" rx="96" fill="#8a4b00"/>
+  <rect x="72" y="112" width="160" height="136" rx="24" fill="#fdf9ee"/>
+  <rect x="256" y="112" width="184" height="136" rx="24" fill="#f4c542"/>
+  <rect x="72" y="268" width="184" height="136" rx="24" fill="#f4c542"/>
+  <rect x="280" y="268" width="160" height="136" rx="24" fill="#fdf9ee"/>
+  <circle cx="152" cy="180" r="26" fill="#8a4b00"/>
+  <path d="M128 220c8-22 40-22 48 0" stroke="#8a4b00" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M300 180h96M300 204h64" stroke="#8a4b00" stroke-width="12" stroke-linecap="round"/>
+  <path d="M108 344l30 30 62-62" stroke="#8a4b00" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="360" cy="336" r="22" fill="#8a4b00"/>
+  <path d="M334 378c10-20 42-20 52 0" stroke="#8a4b00" stroke-width="10" fill="none" stroke-linecap="round"/>
+</svg>

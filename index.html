@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'none'; media-src 'none';">
+  <title>Prancha CAA — comunicação alternativa offline em português</title>
+  <meta name="description" content="Prancha de comunicação alternativa e ampliada (CAA) gratuita, em português, que funciona offline no navegador: cartões com pictogramas, frase falada, edição e exportação. Nada é enviado.">
+  <meta property="og:title" content="Prancha CAA">
+  <meta property="og:description" content="Comunicação por cartões, com voz, edição e uso offline — tudo no seu navegador.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#8a4b00">
+  <link rel="stylesheet" href="src/styles.css">
+  <script defer src="src/board.js"></script>
+  <script defer src="src/storage.js"></script>
+  <script defer src="src/speech.js"></script>
+  <script defer src="src/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir para o conteúdo</a>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">🗣️</span>
+      <div>
+        <h1>Prancha CAA</h1>
+        <p class="tagline">Comunicação por cartões, com voz, edição e uso offline</p>
+      </div>
+    </div>
+    <span class="privacy">Funciona offline · nada é enviado</span>
+  </header>
+
+  <main id="main">
+    <section class="card" aria-labelledby="sentence-title">
+      <h2 id="sentence-title">Frase</h2>
+      <div id="sentence" class="sentence" aria-live="polite" aria-atomic="true" aria-label="Frase montada">
+        <p class="placeholder">Toque nos cartões abaixo para montar a frase.</p>
+      </div>
+
+      <div class="row wrap">
+        <button type="button" id="btn-speak" class="primary big">🔊 Falar</button>
+        <button type="button" id="btn-back" class="ghost">Apagar último</button>
+        <button type="button" id="btn-clear" class="ghost">Limpar</button>
+      </div>
+
+      <div class="rate-row">
+        <label for="rate">Velocidade da voz</label>
+        <input type="range" id="rate" min="0.5" max="1.6" step="0.05" value="0.95">
+        <output id="rate-out" for="rate">0,95×</output>
+      </div>
+
+      <p id="status" class="status" role="status" aria-live="polite" data-kind="info"></p>
+    </section>
+
+    <section class="card" aria-labelledby="board-title">
+      <h2 id="board-title">Cartões</h2>
+
+      <label for="search">Buscar cartão</label>
+      <input type="search" id="search" placeholder="Ex.: água, banheiro, feliz" autocomplete="off">
+
+      <div id="tabs" class="tabs" role="group" aria-label="Categorias da prancha"></div>
+      <div id="grid" class="card-grid"></div>
+
+      <p class="muted small">
+        Cada cartão tem um pictograma e um texto. Ao tocar, ele entra na frase e é anunciado.
+        Use o modo de edição para apagar cartões.
+      </p>
+    </section>
+
+    <section class="card" aria-labelledby="edit-title">
+      <h2 id="edit-title">Editar prancha</h2>
+
+      <div class="form-grid">
+        <div>
+          <label for="new-category">Categoria</label>
+          <select id="new-category"></select>
+        </div>
+        <div>
+          <label for="new-label">Nome do cartão</label>
+          <input type="text" id="new-label" maxlength="48" placeholder="Ex.: Quero água gelada">
+        </div>
+        <div>
+          <label for="new-symbol">Pictograma (emoji)</label>
+          <input type="text" id="new-symbol" maxlength="8" placeholder="🧊">
+        </div>
+      </div>
+
+      <div class="row wrap">
+        <button type="button" id="btn-add" class="primary">Adicionar cartão</button>
+        <button type="button" id="btn-add-category" class="ghost">Nova categoria</button>
+        <label class="toggle">
+          <input type="checkbox" id="edit-mode">
+          <span>Modo de edição (mostra o botão apagar)</span>
+        </label>
+      </div>
+
+      <hr>
+
+      <div class="row wrap">
+        <button type="button" id="btn-save" class="primary">Salvar no navegador</button>
+        <button type="button" id="btn-load" class="ghost">Carregar salvo</button>
+        <button type="button" id="btn-export" class="ghost">Exportar .json</button>
+        <button type="button" id="btn-import" class="ghost">Importar .json</button>
+        <input type="file" id="file" accept="application/json,.json" hidden>
+        <button type="button" id="btn-reset" class="ghost">Voltar à prancha padrão</button>
+      </div>
+
+      <p class="muted small">
+        A prancha fica no armazenamento do seu navegador. O arquivo <code>.json</code> serve para backup,
+        levar para outro computador ou compartilhar com a equipe.
+      </p>
+    </section>
+
+    <section class="card prose" aria-labelledby="help-title">
+      <h2 id="help-title">Como usar</h2>
+      <ol>
+        <li>Escolha a categoria e toque nos cartões na ordem da frase.</li>
+        <li>Toque em <strong>Falar</strong> para ouvir a frase em voz alta.</li>
+        <li>Edite os cartões para a rotina da pessoa: nomes, lugares, brincadeiras.</li>
+        <li>Salve e exporte um backup. Sem internet, a prancha continua funcionando.</li>
+      </ol>
+      <p class="muted small">
+        A síntese de voz depende do navegador e das vozes instaladas no sistema. Se não houver voz em
+        português, a prancha continua utilizável como comunicação por cartões.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Feita para famílias, escolas e terapeutas que precisam de uma prancha simples e gratuita.</p>
+    <p class="muted small">Made by OlacDev · <a href="https://olacdev.com/" rel="noopener">olacdev.com</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "prancha-caa-web-offline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Prancha CAA — comunicação alternativa e ampliada em português, offline-first, com cartões, fala e edição",
+  "license": "MIT",
+  "author": "Ferreira, A. A. (OlacDev)",
+  "homepage": "https://prancha.olacdev.com",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "serve": "node -e \"const http=require('http'),fs=require('fs'),path=require('path');const m={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'application/javascript; charset=utf-8','.webmanifest':'application/manifest+json','.svg':'image/svg+xml'};http.createServer((q,r)=>{const u=q.url.split('?')[0]==='/'?'/index.html':q.url.split('?')[0];const p=path.join(process.cwd(),path.normalize(u));if(!p.startsWith(process.cwd())){r.writeHead(403);return r.end('Forbidden');}fs.readFile(p,(e,d)=>{if(e){r.writeHead(404);return r.end('Not found');}r.writeHead(200,{'Content-Type':m[path.extname(p)]||'application/octet-stream'});r.end(d);});}).listen(8083,()=>console.log('Prancha CAA em http://localhost:8083'));\""
+  },
+  "keywords": ["acessibilidade", "caa", "comunicação alternativa", "offline", "autismo", "pictograma", "leitor de tela"],
+  "engines": { "node": ">=20" },
+  "dependencies": {},
+  "devDependencies": {}
+}
