@@ -66,9 +66,9 @@ Cartões são elementos com `role="button"`, foco por teclado e rótulo que desc
 | Arquivo | Foco | Testes |
 | --- | --- | --- |
 | `board.test.js` | padrão, unicidade, busca, adição/remoção, slug, frase, limites | 22 |
-| `storage.test.js` | validação, exportação, importação, corrupção, cota, memória | 18 |
+| `storage.test.js` | validação, exportação, importação, corrupção, cota, memória | 17 |
 | `speech.test.js` | normalização, texto, escolha de voz, ausência de suporte | 13 |
-| `page.test.js` | integridade, rótulos, CSP, offline, manifesto, marca | 12 |
+| `page.test.js` | integridade, rótulos, CSP, offline, manifesto, marca | 13 |
 
 Resultado: **65 testes, 65 aprovados, 0 falhas**.
 
